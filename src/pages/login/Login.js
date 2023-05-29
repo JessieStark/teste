@@ -1,7 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Register } from '../register/Register';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function Login(){
+export default function Login({navigation}){
+    const header = () => {
+        navigation.push("Register");
+      };
+
     return(
         <View style={styles.container}>
             <Text style={styles.header}>Login</Text>
@@ -13,8 +21,11 @@ export default function Login(){
                 <TouchableOpacity>
                     <Text style={styles.button}>Entrar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={header}>
                     <Text style={styles.register}>Não possui uma conta? Cadastre-se</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.register}>Esqueceu a senha? Recuperar senha</Text>
                 </TouchableOpacity>
             </View>
         </View>
