@@ -4,43 +4,43 @@ import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from 'react-native-web';
-import { Home } from '../home/Home'
+import PatternButton from '../../../components/PatternButton';
+import InputText from '../../../components/InputText';
+import Title from '../../../components/Title';
 
 export default function Register({navigation}){
-    const home = () => {
-        navigation.push("Home");
+    
+    const login = () => {
+        navigation.push("Login");
       };
+
     return(
         <View style={styles.container}>
             <Image source={require('../../../assets/logoR.png')}
-                style={{width:'85%'}}
+                style={{width:'80%'}}
                 resizeMode="contain"
             />                
 
-            <View style={styles.circle}>
-                <Text style={styles.header}>Cadastro</Text>
-                <View style={styles.line}>
-            <Text style={styles.text}>Nome</Text>
-            <Text style={styles.text}>Sobrenome</Text>
-            </View>
-                
-                <View style={styles.line}>
-                <TextInput style={styles.input} placeholder="Digite seu nome"/>
-                <TextInput style={styles.input} placeholder="Digite o sobrenome"/>
+            <View style={styles.circle}> 
+              <Title text={"Cadastro"}/>
+              <View style={styles.line}>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.text}>Nome</Text>
+                    <InputText width={170}/>
                 </View>
-               
+
+                <View style={styles.itemContainer}>
+                    <Text style={styles.text}>Sobrenome</Text>
+                    <InputText width={170} />
+                </View>
+                </View>
                 <Text style={styles.text}>Email</Text>
-                <TextInput style={styles.input} placeholder="Digite o e-mail"/>
+                <InputText/>
                 <Text style={styles.text}>Senha</Text>
-                <TextInput style={styles.input} placeholder="Digite sua senha"/>
+                <InputText/>
+                <PatternButton title="cadastrar">Cadastrar</PatternButton>
                 <TouchableOpacity>
-                    <Text style={styles.button}>Cadastrar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.register}>Já possui uma conta? Fazer login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={home}>
-                    <Text style={styles.register}>Tasks home user</Text>
+                    <Text style={styles.register} onPress={login}>Já possui uma conta? Fazer login</Text>
                 </TouchableOpacity>
                 
             </View>
@@ -55,26 +55,29 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+
     circle: {
       width:'100%',
-      flex: 3,
+      flex: 2,
       backgroundColor: "#FFFFFF",
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,
+      alignItems: 'center',
     },
     header:{
-      marginTop: 30, 
+      marginTop: 15, 
       marginBottom: 10,  
-      fontSize: 36,
-      color: "#212B53",
-      fontWeight: 600,
+      fontSize: 32,
+      color: "#36457D",
+      fontWeight: 700,
       textAlign: 'center',
     },
     text:{
         fontSize: 20,
-        marginTop: 15, 
+        marginTop: 10, 
         fontWeight: 600,  
         textAlign: 'center',
+        color: "#5A5A5A",
     },
     input:{
         fontSize: 16,
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     button:{
         backgroundColor: "#212B53",
         fontSize: 20,
-        marginTop: 20, 
+        marginTop: 10, 
         width: '100%',
         color:"#FFFFFF",
         marginBottom: 10, 
@@ -107,11 +110,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 
-    line:{
-        display: 'flex',
+    line: {
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        padding: 5,
-    }
+        justifyContent: 'space-between',
+        marginBottom: 20,
+      },
+      itemContainer: {
+        flex: 1,
+        marginRight: 10,
+        marginLeft: 10,
+        alignItems: 'center',
+      },
 
   });

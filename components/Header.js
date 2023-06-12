@@ -1,34 +1,36 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
-const Header = ({ title, onNotificationPress, onProfilePress }) => {
+const Header = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity onPress={onNotificationPress}>
-      <Text style={styles.title}>{title}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onProfilePress}>
-        <Icon name="user" type="font-awesome" />
-      </TouchableOpacity>
+    <View style={styles.header}>
+       <Image source={require('../assets/notif.png')}
+                style={{width: 25, height: 26}}
+               
+            />  
+            <Text style={styles.headerText}>Isa</Text>
+            <Image source={require('../assets/iconuser.jpg')}
+                style={{width: 50, height: 50, borderRadius: 55 * 2,}}
+               
+            />  
+
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  header: {
+    display: 'flex',
     flexDirection: 'row',
+    paddingTop: 15,
+    paddingBottom: 10,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    height: 60,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+
   },
-  title: {
-    fontSize: 18,
+  headerText: {
+    fontSize: 22,
+    color: '#000',
     fontWeight: 'bold',
   },
 });
